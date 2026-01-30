@@ -1,0 +1,45 @@
+body {
+  background: #0f1b2a;
+  font-family: "Segoe UI", Inter, sans-serif;
+  color: #e6edf5;
+}
+
+#title {
+  text-align: center;
+}
+
+.nav-list {
+  display: flex;
+  gap: 10px;
+  justify-content: end;
+}
+
+.nav-list > li {
+  list-style-type: none;
+}
+
+li > a {
+  text-decoration: none;
+  color: #e6edf5;
+}
+
+a:hover {
+  color: white;
+}
+
+/* line-through text */
+.crossed {
+  text-decoration: line-through;
+  color: gray;
+}
+
+/* progress bar (native) */
+#progressBar {
+  width: 300px;
+  height: 15px;
+}
+
+/* footer */
+footer {
+  text-align: center;
+}
