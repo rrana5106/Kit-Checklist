@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
-    <title>Kit Cheklist</title>
+    <title>Kit Checklist</title>
   </head>
 
   <body>
@@ -23,8 +23,10 @@
     <main>
       <div class="container">
         <section>
-          <label for="progressBar">Progress: </label>
-          <progress id="progressBar" value="0" max="100"></progress>
+          
+          <label for="progressBar" id="progress-text">Progress: </label>
+         
+          <progress id="progressBar" value="0" max="100">1</progress>
         </section>
         <section id="personal">
           <h2>Personal Clothing</h2>
@@ -33,6 +35,12 @@
               <label>
                 <input type="checkbox" class="checkbox-item" />
                 <span class="item">PCS Shirt</span>
+              </label>
+            </p>
+            <p>
+              <label>
+                <input type="checkbox" class="checkbox-item" />
+                <span class="item">PCS Trouser</span>
               </label>
             </p>
             <p>

@@ -1,6 +1,12 @@
 // 1) Get the elements we need
 const checkboxes = document.querySelectorAll(".checkbox-item");
 const progressBar = document.getElementById("progressBar");
+const progressText = document.getElementById("progress-text");
+
+// creating the element
+const spanEl = document.createElement("span");
+
+progressText.append(spanEl);
 
 // 2) Update the progress bar (based on how many are checked)
 function updateProgressBar() {
@@ -18,6 +24,9 @@ function updateProgressBar() {
 
   // Update the progress bar value
   progressBar.value = percent;
+
+  // showing the percentage value beside the bar
+  spanEl.textContent = Math.ceil(percent) + "%";
 }
 
 // 3) Cross / uncross the text beside a checkbox
