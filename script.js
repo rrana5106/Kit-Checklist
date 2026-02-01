@@ -1,26 +1,46 @@
-// get elements
-const checkbox = document.getElementById("test");
-const text = document.getElementById("labelText");
+// 1) Get the elements we need
+const checkboxes = document.querySelectorAll(".checkbox-item");
 const progressBar = document.getElementById("progressBar");
 
-// when checkbox changes
-checkbox.addEventListener("change", function () {
+// 2) Update the progress bar (based on how many are checked)
+function updateProgressBar() {
+  let checkedCount = 0;
 
-  // if checkbox is checked
-  if (checkbox.checked === true) {
+  // Count checked checkboxes
+  checkboxes.forEach(function (checkbox) {
+    if (checkbox.checked) {
+      checkedCount = checkedCount + 1;
+    }
+  });
 
-    // cross the text
+  // Convert to percentage
+  const percent = (checkedCount / checkboxes.length) * 100;
+
+  // Update the progress bar value
+  progressBar.value = percent;
+}
+
+// 3) Cross / uncross the text beside a checkbox
+function updateTextStyle(checkbox) {
+  const text = checkbox.nextElementSibling;
+
+  if (checkbox.checked) {
     text.classList.add("crossed");
-
-    // fill the progress bar
-    progressBar.style.width = "100%";
-
   } else {
-
-    // remove cross from text
     text.classList.remove("crossed");
-
-    // empty the progress bar
-    progressBar.style.width = "0%";
   }
+}
+
+// 4) When any checkbox changes, update text + progress
+checkboxes.forEach(function (checkbox) {
+  checkbox.addEventListener("change", function () {
+    updateTextStyle(checkbox);
+    updateProgressBar();
+  });
 });
+
+// 5) Run once when page loads (sets correct initial state)
+checkboxes.forEach(function (checkbox) {
+  updateTextStyle(checkbox);
+});
+updateProgressBar();

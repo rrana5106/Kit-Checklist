@@ -27,6 +27,24 @@ a:hover {
   color: white;
 }
 
+/* conatainer */
+.container {
+  background: rgba(8, 40, 70, 0.92);
+  border: 2px solid white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  margin: 0 auto;
+  padding: 20px 0px;
+}
+
+/* kit-list */
+.kit-list {
+  margin: 0px auto;
+}
+
 /* line-through text */
 .crossed {
   text-decoration: line-through;
@@ -35,8 +53,13 @@ a:hover {
 
 /* progress bar (native) */
 #progressBar {
-  width: 300px;
+  width: 300;
   height: 15px;
+  color: red;
+}
+#personal {
+  display: flex;
+  flex-direction: column;
 }
 
 /* footer */
