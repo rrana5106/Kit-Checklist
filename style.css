@@ -27,7 +27,7 @@ a:hover {
   color: white;
 }
 
-/* conatainer */
+/* container */
 .container {
   background: rgba(8, 40, 70, 0.92);
   border: 2px solid white;
@@ -81,7 +81,7 @@ a:hover {
   transition: width 0.3s ease;
 }
 
-#personal {
+#person,#bergen, #daysack {
   display: flex;
   flex-direction: column;
 }

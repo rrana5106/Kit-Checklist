@@ -21,15 +21,46 @@
     </header>
 
     <main>
+  <div class="add-item-container">
+    <form action="" id="addItemForm">
+      <fieldset>
+        <legend>Your Choice</legend>
+        <label for="category">Category</label>
+        <select name="category" id="category">
+          <option value="Personal">Personal</option>
+          <option value="Bergen">Bergen</option>
+          <option value="Day-sack">Day-sack</option>
+        </select>
+        <label for="item-name">Item Name:</label>
+        <input type="text" placeholder="Enter the item name you want to add" id="item-name"> 
+        <input type="submit" value="Add item">
+      </fieldset>
+    </form>
+  </div>
       <div class="container">
+        <!-- progress bar -->
         <section>
-          
           <label for="progressBar" id="progress-text">Progress: </label>
-         
+
           <progress id="progressBar" value="0" max="100">1</progress>
         </section>
-        <section id="personal">
-          <h2>Personal Clothing</h2>
+
+        <!-- personal kit list -->
+        <section id="person">
+          <h2>In Person Kit list</h2>
+          <div class="kit-list">
+            <p>
+              <label id="person-kit">
+                <input type="checkbox" class="checkbox-item" />
+                <span class="item">PCS Shirt</span>
+              </label>
+            </p>
+   
+          </div>
+        </section>
+        <!-- bergen kit list -->
+        <section id="bergen">
+          <h2>Bergen item list</h2>
           <div class="kit-list">
             <p>
               <label>
@@ -37,18 +68,20 @@
                 <span class="item">PCS Shirt</span>
               </label>
             </p>
+      
+          </div>
+        </section>
+        <!-- daysack kit list -->
+        <section id="daysack">
+          <h2>Daysack item list</h2>
+          <div class="kit-list">
             <p>
               <label>
                 <input type="checkbox" class="checkbox-item" />
-                <span class="item">PCS Trouser</span>
+                <span class="item">PCS Shirt</span>
               </label>
             </p>
-            <p>
-              <label>
-                <input type="checkbox" class="checkbox-item" />
-                <span class="item">PCS Trouser</span>
-              </label>
-            </p>
+      
           </div>
         </section>
       </div>
