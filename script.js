@@ -1,5 +1,5 @@
 // 1) Get the elements we need
-const checkboxes = document.querySelectorAll(".checkbox-item");
+// const checkboxes = document.querySelectorAll(".checkbox-item");
 const progressBar = document.getElementById("progressBar");
 const progressText = document.getElementById("progress-text");
 const categoryEl = document.getElementById("category");
@@ -14,6 +14,7 @@ formEl.addEventListener("submit", function (event) {
   event.preventDefault();
 
   // creating  element
+  const liElement = document.createElement("li");
   const inputEL = document.createElement("input");
   const itemTextEl = document.createElement("span");
 
@@ -28,7 +29,9 @@ formEl.addEventListener("submit", function (event) {
   itemTextEl.textContent = inputValue.value;
 
   // appending or adding all the element in the
-  personKit.append(inputEL, itemTextEl);
+  liElement.append(inputEL, itemTextEl);
+  liElement.setAttribute("style", "list-style-type: none;");
+  personKit.append(liElement);
 
   // attach the event listener to the input
   inputEL.addEventListener("change", function () {
@@ -37,7 +40,7 @@ formEl.addEventListener("submit", function (event) {
   });
 });
 
-// /*
+/*
 // console.log(categoryEl.value);
 // selecting the category
 function selectingCategory() {
@@ -51,6 +54,7 @@ function selectingCategory() {
     console.log("Category: Day-sack");
   }
 }
+*/
 
 // creating the element
 const progressPercentEL = document.createElement("span");
@@ -59,17 +63,27 @@ progressText.append(progressPercentEL);
 
 // 2) Update the progress bar (based on how many are checked)
 function updateProgressBar() {
+  // get all current checkboxes (old + new)
+  const allCheckboxes = document.querySelectorAll(".checkbox-item");
+
   let checkedCount = 0;
 
   // Count checked checkboxes
-  checkboxes.forEach(function (checkbox) {
+  allCheckboxes.forEach(function (checkbox) {
     if (checkbox.checked) {
       checkedCount = checkedCount + 1;
     }
   });
 
+  // default progress
+  let percent = 0;
   // Convert to percentage
-  const percent = (checkedCount / checkboxes.length) * 100;
+  // const percent = (checkedCount / checkboxes.length) * 100;
+
+  // calculate only if there is at least one checkbox
+  if (allCheckboxes.length > 0) {
+    percent = (checkedCount / allCheckboxes.length) * 100;
+  }
 
   // Update the progress bar value
   progressBar.value = percent;
