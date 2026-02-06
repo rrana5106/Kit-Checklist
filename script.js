@@ -1,12 +1,11 @@
+/*
 // 1) Get the elements we need
-// const checkboxes = document.querySelectorAll(".checkbox-item");
+const checkboxes = document.querySelectorAll(".checkbox-item");
 const progressBar = document.getElementById("progressBar");
 const progressText = document.getElementById("progress-text");
 const categoryEl = document.getElementById("category");
 const formEl = document.getElementById("addItemForm");
-
 const inputValue = document.getElementById("item-name");
-
 const personKit = document.getElementById("person-kit");
 
 formEl.addEventListener("submit", function (event) {
@@ -19,7 +18,8 @@ formEl.addEventListener("submit", function (event) {
   const itemTextEl = document.createElement("span");
 
   // setting attribute
-  inputEL.setAttribute("type", "checkbox");
+  // inputEL.setAttribute("type", "checkbox");
+  inputEL.type = "checkbox";
 
   // adding class
   inputEL.classList.add("checkbox-item");
@@ -30,7 +30,9 @@ formEl.addEventListener("submit", function (event) {
 
   // appending or adding all the element in the
   liElement.append(inputEL, itemTextEl);
-  liElement.setAttribute("style", "list-style-type: none;");
+  // liElement.setAttribute("style", "list-style-type: none;");
+  liElement.style.listStyleType = "none";
+
   personKit.append(liElement);
 
   // attach the event listener to the input
@@ -55,7 +57,7 @@ function selectingCategory() {
   }
 }
 */
-
+/*
 // creating the element
 const progressPercentEL = document.createElement("span");
 
@@ -116,4 +118,110 @@ checkboxes.forEach(function (checkbox) {
   updateTextStyle(checkbox);
 });
 updateProgressBar();
-// */
+*/
+
+
+// ==============================
+// 1) SELECT (get HTML elements)
+// ==============================
+const progressBar = document.getElementById("progressBar");
+const progressText = document.getElementById("progress-text");
+const formEl = document.getElementById("addItemForm");
+const inputValue = document.getElementById("item-name");
+const listEl = document.getElementById("person-kit");
+
+// Create the percent label once (we will update it later)
+const progressPercentEl = document.createElement("span");
+progressText.append(progressPercentEl);
+
+// ==============================
+// 2) LISTEN: when form is submitted
+// ==============================
+formEl.addEventListener("submit", function (event) {
+  event.preventDefault(); // stop page refresh
+
+  // Get what the user typed
+  const text = inputValue.value.trim();
+  if (text === "") return; // don't add empty items
+
+  // Create elements
+  const li = document.createElement("li");
+  const checkbox = document.createElement("input");
+  const span = document.createElement("span");
+
+  // Setup checkbox
+  checkbox.type = "checkbox";
+  checkbox.classList.add("checkbox-item");
+
+  // Setup text
+  span.textContent = text;
+  span.classList.add("item");
+
+  // Put them inside <li>
+  li.append(checkbox, span);
+  li.style.listStyleType = "none";
+
+  // Add <li> to the list
+  listEl.append(li);
+
+  // Clear the input after adding
+  inputValue.value = "";
+
+  // Update progress (new checkbox added means percent changes)
+  updateProgressBar();
+});
+
+// ==============================
+// 3) LISTEN: one listener for ALL checkboxes (event delegation)
+// ==============================
+listEl.addEventListener("change", function (event) {
+  // Only react if the thing that changed is a checkbox-item
+  if (!event.target.classList.contains("checkbox-item")) return;
+
+  // event.target is the checkbox
+  const checkbox = event.target;
+
+  updateTextStyle(checkbox);
+  updateProgressBar();
+});
+
+// ==============================
+// 4) CHANGE: update progress bar
+// ==============================
+function updateProgressBar() {
+  const allCheckboxes = document.querySelectorAll(".checkbox-item");
+
+  let checkedCount = 0;
+  allCheckboxes.forEach(function (cb) {
+    if (cb.checked) checkedCount += 1;
+  });
+
+  let percent = 0;
+  if (allCheckboxes.length > 0) {
+    percent = (checkedCount / allCheckboxes.length) * 100;
+  }
+
+  progressBar.value = percent;
+  progressPercentEl.textContent = Math.ceil(percent) + "%";
+}
+
+// ==============================
+// 5) CHANGE: cross/uncross text
+// ==============================
+function updateTextStyle(checkbox) {
+  const textEl = checkbox.nextElementSibling; // the <span> after checkbox
+  if (!textEl) return;
+
+  if (checkbox.checked) {
+    textEl.classList.add("crossed");
+  } else {
+    textEl.classList.remove("crossed");
+  }
+}
+
+// Run once on page load (if you already have items in HTML)
+document.querySelectorAll(".checkbox-item").forEach(function (cb) {
+  updateTextStyle(cb);
+});
+updateProgressBar();
+
