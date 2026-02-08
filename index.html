@@ -21,22 +21,28 @@
     </header>
 
     <main>
-  <div class="add-item-container">
-    <form action="" id="addItemForm">
-      <fieldset>
-        <legend>Your Choice</legend>
-        <label for="category">Category</label>
-        <select name="category" id="category">
-          <option value="Personal">Personal</option>
-          <option value="Bergen">Bergen</option>
-          <option value="Day-sack">Day-sack</option>
-        </select>
-        <label for="item-name">Item Name:</label>
-        <input type="text" placeholder="Enter the item name you want to add" id="item-name"> 
-        <input type="submit" value="Add item">
-      </fieldset>
-    </form>
-  </div>
+      <div class="add-item-container">
+        <form action="" id="addItemForm">
+          <fieldset>
+            <legend>Your Choice</legend>
+            <label for="category">Category</label>
+            <select name="category" id="category">
+              <option value="select">Select</option>
+              <option value="Personal">Personal</option>
+              <option value="Bergen">Bergen</option>
+              <option value="Daysack">Day-sack</option>
+            </select>
+            <label for="item-name">Item Name:</label>
+            <input
+              type="text"
+              placeholder="Enter the item name you want to add"
+              id="item-name"
+            />
+            <input type="submit" value="Add item" />
+          </fieldset>
+        </form>
+      </div>
+      <div class="alert"></div>
       <div class="container">
         <!-- progress bar -->
         <section>
@@ -50,12 +56,11 @@
           <h2>In Person Kit list</h2>
           <div class="kit-list">
             <p>
-              <label id="person-kit">
+              <label id="personal-kit">
                 <input type="checkbox" class="checkbox-item" />
                 <span class="item">PCS Shirt</span>
               </label>
             </p>
-   
           </div>
         </section>
         <!-- bergen kit list -->
@@ -63,12 +68,11 @@
           <h2>Bergen item list</h2>
           <div class="kit-list">
             <p>
-              <label>
+              <label id="bergen-kit">
                 <input type="checkbox" class="checkbox-item" />
                 <span class="item">PCS Shirt</span>
               </label>
             </p>
-      
           </div>
         </section>
         <!-- daysack kit list -->
@@ -76,12 +80,11 @@
           <h2>Daysack item list</h2>
           <div class="kit-list">
             <p>
-              <label>
+              <label id="daysack-kit">
                 <input type="checkbox" class="checkbox-item" />
                 <span class="item">PCS Shirt</span>
               </label>
             </p>
-      
           </div>
         </section>
       </div>
