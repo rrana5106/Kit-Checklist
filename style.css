@@ -11,7 +11,10 @@ body {
 .nav-list {
   display: flex;
   gap: 10px;
-  justify-content: end;
+  justify-content: flex-end;
+  margin: 0;
+  padding: 0;
+  
 }
 
 .nav-list > li {
@@ -21,24 +24,53 @@ body {
 li > a {
   text-decoration: none;
   color: #e6edf5;
+  display: inline-block; /* 👈 REQUIRED */
+  padding: 6px 10px; /* optional but recommended */
+  border-radius: 6px; /* optional, looks nicer */
+  transition: box-shadow 0.2s ease;
 }
 
-a:hover {
-  color: white;
+li > a {
+  transition: box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
 }
 
+
+li > a:hover {
+  color: #22d3ee;
+  box-shadow: 0 4px 14px rgba(34, 211, 238, 0.45);
+  background: rgba(34, 211, 238, 0.08);
+}
+
+.alert {
+  text-align: center;
+  height: 20px;
+  margin: 10px 0px;
+}
+/* container */
 /* container */
 .container {
-  background: rgba(8, 40, 70, 0.92);
-  border: 2px solid white;
+  background: rgba(60, 72, 127, 0.2);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  border-radius: 16px;
+  border: 1px solid rgba(34, 211, 238, 0.35);
+
+  box-shadow:
+    0 4px 30px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(34, 211, 238, 0.15);
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 50%;
-  margin: 0 auto;
-  padding: 20px 0px;
+
+  width: 75%;
+  margin: 10px auto 0;
+  padding: 20px 0;
 }
+
+
 
 /* kit-list */
 .kit-list {
@@ -69,19 +101,14 @@ a:hover {
 #progressBar::-webkit-progress-value {
   background-color: #4caf50;
   border-radius: 50px;
-}
-
-/* Firefox */
-#progressBar::-moz-progress-bar {
-  background-color: #4caf50;
-  border-radius: 50px;
-}
-
-#progressBar::-webkit-progress-value {
   transition: width 0.3s ease;
 }
 
-#person,#bergen, #daysack {
+
+
+#person,
+#bergen,
+#daysack {
   display: flex;
   flex-direction: column;
 }
@@ -90,3 +117,6 @@ a:hover {
 footer {
   text-align: center;
 }
+
+
+
