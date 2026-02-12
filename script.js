@@ -66,23 +66,30 @@ formEl.addEventListener("submit", function (event) {
   // get the element
   const alertBox = document.querySelector(".alert");
 
+  const targetList = categoryObj[category];
+
+  if (text === "" && !targetList) {
+    alertBox.textContent =
+      "Please select the category and input the item name.";
+    alertBox.style.color = "red";
+    return;
+  }
   if (text === "") {
-    alertBox.textContent = "Please enter an item";
+    alertBox.textContent = "Please type the item name.";
     alertBox.style.color = "red";
 
     return;
   }
- 
-
-  const targetList = categoryObj[category];
 
   if (!targetList) {
-    console.log("Unknown category:", category);
-    alertBox.textContent = "Please select the catergory";
+    alertBox.textContent = "Please select the category";
+    alertBox.style.color = "red";
     return;
   }
   // ✅ clear alert message on success
-  alertBox.textContent = "";
+  alertBox.textContent = `Item successfully added to ${category}`;
+  alertBox.style.color = "green";
+
   addItemToList(text, targetList);
 
   // Clear the input after adding
@@ -145,6 +152,16 @@ function updateTextStyle(checkbox) {
   } else {
     textEl.classList.remove("crossed");
   }
+}
+// ==============================
+// 5) STORAGE: adding to the local storage so the it can keep the data even we refresh the page
+// ==============================
+function saveToLocalStorage() {
+  const data = {
+    Personal: [],
+    Bergen: [],
+    Daysack: [],
+  };
 }
 
 // Run once on page load (if you already have items in HTML)

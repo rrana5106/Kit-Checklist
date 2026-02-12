@@ -1,53 +1,148 @@
-body {
-  background: #0f1b2a;
-  font-family: "Segoe UI", Inter, sans-serif;
-  color: #e6edf5;
+/* ============================= */
+/* GLOBAL RESET + BASE SETTINGS  */
+/* ============================= */
+
+/* Ensures padding/borders don’t break layouts */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
+/* Page base styling */
+body {
+  margin: 0;                     /* Remove default browser margin */
+  padding: 16px;                 /* Space around content */
+  background: #0f1b2a;           /* Dark navy background */
+  font-family: "Segoe UI", Inter, sans-serif;
+  color: #e6edf5;                /* Light text for contrast */
+}
+
+/* Limit header width and center it */
+header {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Center main page title */
 #title {
   text-align: center;
+  margin: 14px 0 0;
 }
 
+/* ============================= */
+/* NAVIGATION STYLING            */
+/* ============================= */
+
+/* Navigation list layout */
 .nav-list {
-  display: flex;
-  gap: 10px;
-  justify-content: flex-end;
+  display: flex;                 /* Horizontal layout */
+  flex-wrap: wrap;               /* Allows wrapping on small screens */
+  gap: 10px;                     /* Space between nav items */
+  justify-content: flex-end;     /* Align right (desktop) */
   margin: 0;
   padding: 0;
-  
 }
 
+/* Remove bullet points */
 .nav-list > li {
-  list-style-type: none;
+  list-style: none;
 }
 
-li > a {
-  text-decoration: none;
+/* Nav link styling */
+.nav-list a {
+  text-decoration: none;         /* Remove underline */
   color: #e6edf5;
-  display: inline-block; /* 👈 REQUIRED */
-  padding: 6px 10px; /* optional but recommended */
-  border-radius: 6px; /* optional, looks nicer */
-  transition: box-shadow 0.2s ease;
+  display: inline-block;         /* Required for padding & hover effects */
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: 
+    box-shadow 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
-li > a {
-  transition: box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
-}
-
-
-li > a:hover {
+/* Hover effect */
+.nav-list a:hover {
   color: #22d3ee;
   box-shadow: 0 4px 14px rgba(34, 211, 238, 0.45);
   background: rgba(34, 211, 238, 0.08);
 }
 
+/* ============================= */
+/* MAIN LAYOUT                   */
+/* ============================= */
+
+/* Center main content area */
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Center the form */
+.add-item-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+/* Form width adapts to screen size */
+#addItemForm {
+  width: min(650px, 100%);
+}
+
+/* Fieldset styling */
+fieldset {
+  border-radius: 12px;
+  border: 1px solid rgba(230, 237, 245, 0.2);
+  padding: 14px;
+}
+
+/* Stack labels vertically */
+#addItemForm label {
+  display: block;
+  margin-top: 10px;
+}
+
+/* Style text input + dropdown */
+#addItemForm input[type="text"],
+#addItemForm select {
+  width: 100%;                   /* Full width on mobile */
+  margin-top: 6px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(230, 237, 245, 0.25);
+  background: rgba(28, 43, 58, 0.7);
+  color: #e6edf5;
+}
+
+/* Submit button styling */
+#addItemForm input[type="submit"] {
+  width: 100%;
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  background: rgba(34, 211, 238, 0.12);
+  color: #e6edf5;
+  cursor: pointer;
+}
+
+/* ============================= */
+/* ALERT MESSAGE                 */
+/* ============================= */
+
+/* Prevents layout jumping when alert text changes */
 .alert {
   text-align: center;
-  height: 20px;
-  margin: 10px 0px;
+  min-height: 20px;
+  margin: 10px 0;
 }
-/* container */
-/* container */
+
+/* ============================= */
+/* CHECKLIST CONTAINER           */
+/* ============================= */
+
 .container {
   background: rgba(60, 72, 127, 0.2);
   backdrop-filter: blur(6px);
@@ -61,27 +156,18 @@ li > a:hover {
     0 0 0 1px rgba(34, 211, 238, 0.15);
 
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;        /* Stack sections vertically */
+  align-items: stretch;
 
-  width: 75%;
-  margin: 10px auto 0;
-  padding: 20px 0;
+  width: min(900px, 100%);       /* Responsive width */
+  margin: 12px auto 0;
+  padding: 18px;
+  gap: 16px;                     /* Space between sections */
 }
 
-
-
-/* kit-list */
-.kit-list {
-  margin: 0px auto;
-}
-
-/* line-through text */
-.crossed {
-  text-decoration: line-through;
-  color: gray;
-}
+/* ============================= */
+/* PROGRESS BAR                  */
+/* ============================= */
 
 #progressBar {
   appearance: none;
@@ -90,33 +176,86 @@ li > a:hover {
   height: 15px;
   border: 2px solid #4caf50;
   border-radius: 50px;
+  margin-top: 10px;
 }
 
-/* Chrome, Edge, Safari */
+/* Chrome/Edge/Safari background */
 #progressBar::-webkit-progress-bar {
   background-color: #1c2b3a;
   border-radius: 50px;
 }
 
+/* Progress fill styling */
 #progressBar::-webkit-progress-value {
   background-color: #4caf50;
   border-radius: 50px;
   transition: width 0.3s ease;
 }
 
-
+/* ============================= */
+/* KIT SECTIONS                  */
+/* ============================= */
 
 #person,
 #bergen,
 #daysack {
   display: flex;
   flex-direction: column;
+  gap: 8px;
 }
 
-/* footer */
+/* icon for category */
+.category-icon {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+/* Remove unnecessary margins */
+.kit-list {
+  margin: 0;
+}
+
+/* Checked item style */
+.crossed {
+  text-decoration: line-through;
+  color: gray;
+}
+
+/* ============================= */
+/* FOOTER                        */
+/* ============================= */
+
 footer {
   text-align: center;
+  margin-top: 18px;
+  opacity: 0.9;
 }
 
+/* ============================= */
+/* MOBILE RESPONSIVE ADJUSTMENTS */
+/* ============================= */
 
+@media (max-width: 600px) {
 
+  /* Reduce outer padding */
+  body {
+    padding: 12px;
+  }
+
+  /* Center nav items on mobile */
+  .nav-list {
+    justify-content: center;
+  }
+
+  /* Slightly smaller heading */
+  #title {
+    font-size: 1.6rem;
+  }
+
+  /* Reduce container padding */
+  .container {
+    padding: 14px;
+  }
+}

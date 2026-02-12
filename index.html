@@ -27,10 +27,10 @@
             <legend>Your Choice</legend>
             <label for="category">Category</label>
             <select name="category" id="category">
-              <option value="select">Select</option>
-              <option value="Personal">Personal</option>
+              <option value="" selected disabled>Choose the Category</option>
+              <option value="Personal">Person</option>
               <option value="Bergen">Bergen</option>
-              <option value="Daysack">Day-sack</option>
+              <option value="Daysack">Daysack</option>
             </select>
             <label for="item-name">Item Name:</label>
             <input
@@ -54,38 +54,44 @@
 
         <!-- personal kit list -->
         <section id="person">
-          <h2>In Person Kit list</h2>
+          <h2>
+            <img
+              src="./assets/mil-person-green.svg"
+              alt="person-img"
+              class="category-icon"
+            />
+            Person
+          </h2>
           <div class="kit-list">
-            <p>
-              <label id="personal-kit">
-                <input type="checkbox" class="checkbox-item" />
-                <span class="item">PCS Shirt</span>
-              </label>
-            </p>
+            <ul id="personal-kit"></ul>
           </div>
         </section>
         <!-- bergen kit list -->
         <section id="bergen">
-          <h2>Bergen item list</h2>
+          <h2>
+            <img
+              src="./assets/bergen.svg"
+              alt="bergen-img"
+              class="category-icon"
+            />
+            Bergen
+          </h2>
           <div class="kit-list">
-            <p>
-              <label id="bergen-kit">
-                <input type="checkbox" class="checkbox-item" />
-                <span class="item">PCS Shirt</span>
-              </label>
-            </p>
+            <ul id="bergen-kit"></ul>
           </div>
         </section>
         <!-- daysack kit list -->
         <section id="daysack">
-          <h2>Daysack item list</h2>
+          <h2>
+            <img
+              src="./assets/daysack.svg"
+              alt="daysack-img"
+              class="category-icon"
+            />
+            Daysack
+          </h2>
           <div class="kit-list">
-            <p>
-              <label id="daysack-kit">
-                <input type="checkbox" class="checkbox-item" />
-                <span class="item">PCS Shirt</span>
-              </label>
-            </p>
+            <ul id="daysack-kit"></ul>
           </div>
         </section>
       </div>
