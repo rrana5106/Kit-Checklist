@@ -17,6 +17,9 @@
           <li><a href="#">Contact Us</a></li>
         </ul>
       </nav>
+      <section class="logo-container">
+        <img src="assets/The-British-Army.svg" alt="army-logo" id="army-logo" />
+      </section>
       <h1 id="title">Kit Checklist</h1>
     </header>
 
@@ -26,7 +29,7 @@
           <fieldset>
             <legend>Your Choice</legend>
             <label for="category">Category</label>
-            <select name="category" id="category">
+            <select name="category" id="category" required>
               <option value="" selected disabled>Choose the Category</option>
               <option value="Personal">Person</option>
               <option value="Bergen">Bergen</option>
@@ -37,6 +40,7 @@
               type="text"
               placeholder="Enter the item name you want to add"
               id="item-name"
+              required
             />
             <input type="submit" value="Add item" />
           </fieldset>
