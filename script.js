@@ -25,13 +25,17 @@ const progressPercentEl = document.createElement("span");
 progressText.append(progressPercentEl);
 
 // ================================
-// functon to add item to the list
+// function to add item to the list
 // ================================
 function addItemToList(text, targetList) {
   // Create li element
   const liEl = document.createElement("li");
   // adding list-style-type to "none"
   liEl.style.listStyleType = "none";
+  // create btn element
+  const btnEl = document.createElement("button");
+  btnEl.textContent = "remove";
+  btnEl.classList.add("remove-btn");
 
   // create input element
   const checkbox = document.createElement("input");
@@ -48,12 +52,30 @@ function addItemToList(text, targetList) {
   span.classList.add("item");
 
   // Put them inside <li>
-  liEl.append(checkbox, span);
+  liEl.append(checkbox, span, btnEl);
 
+  // remove the element and the text
+  btnEl.addEventListener("click", function () {
+    const confirmDel = confirm("Are you sure?");
+
+    // user confirmation
+    if (confirmDel === false) {
+      return;
+    }
+    liEl.remove(); // remove only this item
+
+    updateProgressBar(); // update the progress bar
+    saveToLocalStorage(); // save the new state
+
+    const alertBox = document.querySelector(".alert");
+    alertBox.textContent = "Item removed";
+    alertBox.style.color = "green";
+  });
   targetList.append(liEl);
 }
 
 // ==============================
+
 // 2) LISTEN: when form is submitted
 // ==============================
 formEl.addEventListener("submit", function (event) {
@@ -92,6 +114,8 @@ formEl.addEventListener("submit", function (event) {
 
   addItemToList(text, targetList);
 
+  saveToLocalStorage();
+
   // Clear the input after adding
   inputValue.value = "";
 
@@ -100,6 +124,7 @@ formEl.addEventListener("submit", function (event) {
 });
 
 // ==============================
+
 // 4) LISTEN: one listener for ALL checkboxes (event delegation)
 // ==============================
 // Put this on a common parent that contains ALL lists.
@@ -112,6 +137,7 @@ allListsContainer.addEventListener("change", function (event) {
 
   updateTextStyle(event.target);
   updateProgressBar();
+  saveToLocalStorage();
 });
 
 // ==============================
@@ -153,6 +179,7 @@ function updateTextStyle(checkbox) {
     textEl.classList.remove("crossed");
   }
 }
+
 // ==============================
 // 5) STORAGE: adding to the local storage so the it can keep the data even we refresh the page
 // ==============================
@@ -162,8 +189,23 @@ function saveToLocalStorage() {
     Bergen: [],
     Daysack: [],
   };
-}
+/*
+  // ==============================
+  // PERSONAL LIST 
+  // ==============================
+  
+  // get all <li> items inside personal list
+  const allPersonalList = personalList.querySelectorAll("li");
 
+  // loop through each <li>
+  allPersonalList.forEach(function(){
+
+    // get the element 
+   
+  })
+
+  */F
+}
 // Run once on page load (if you already have items in HTML)
 document.querySelectorAll(".checkbox-item").forEach(function (cb) {
   updateTextStyle(cb);

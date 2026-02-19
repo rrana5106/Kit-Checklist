@@ -241,6 +241,12 @@ fieldset {
   color: gray;
 }
 
+.remove-btn{
+ margin-left: 700px;
+ background-color: red;
+ color: white;
+}
+
 /* ============================= */
 /* FOOTER                        */
 /* ============================= */
