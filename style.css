@@ -19,7 +19,8 @@ body {
 }
 
 /* Limit header width and center it */
-header,main {
+header,
+main {
   max-width: 1100px;
   margin: 0 auto;
 }
@@ -95,7 +96,6 @@ main {
   max-width: 1100px;
   margin: 0 auto;
 }
-
 
 /* Center the form */
 .add-item-container {
@@ -241,10 +241,18 @@ fieldset {
   color: gray;
 }
 
-.remove-btn{
- margin-left: 700px;
- background-color: red;
- color: white;
+.remove-btn {
+  background-color: rgb(163, 159, 159);
+  color: rgb(172, 35, 35);
+  border-radius: 12px;
+  transition-duration: 0.4s;
+  margin: 0px 120px;
+}
+
+.remove-btn:hover{
+  background-color: #b03f3f;
+  color: white;
+  box-shadow: 0 4px 14px rgba(104, 104, 105, 0.45);
 }
 
 /* ============================= */

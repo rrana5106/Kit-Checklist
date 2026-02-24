@@ -201,10 +201,11 @@ function saveToLocalStorage() {
   allPersonalList.forEach(function(){
 
     // get the element 
+
    
   })
-
-  */F
+*/
+  
 }
 // Run once on page load (if you already have items in HTML)
 document.querySelectorAll(".checkbox-item").forEach(function (cb) {
