@@ -69,7 +69,7 @@ function addItemToList(text, targetList) {
 
     const alertBox = document.querySelector(".alert");
     alertBox.textContent = "Item removed";
-    alertBox.style.color = "green";
+    alertBox.style.color = "red";
   });
   targetList.append(liEl);
 }

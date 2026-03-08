@@ -27,7 +27,7 @@
       <div class="add-item-container">
         <form action="" id="addItemForm">
           <fieldset>
-            <legend>Your Choice</legend>
+            <legend>User Option</legend>
             <label for="category">Category</label>
             <select name="category" id="category" required>
               <option value="" selected disabled>Choose the Category</option>
@@ -51,9 +51,13 @@
       <div class="container">
         <!-- progress bar -->
         <section>
-          <label for="progressBar" id="progress-text">Progress: </label>
+          <fieldset>
+            <legend>
+              <label for="progressBar" id="progress-text">Progress: </label>
+            </legend>
 
-          <progress id="progressBar" value="0" max="100">1</progress>
+            <progress id="progressBar" value="0" max="100">1</progress>
+          </fieldset>
         </section>
 
         <!-- personal kit list -->
@@ -101,7 +105,9 @@
       </div>
     </main>
 
-    <footer>Copyright by RRM</footer>
+    <footer>
+      <span id="unclassified">unclassified</span> Copyright by RRM
+    </footer>
     <script src="./script.js"></script>
   </body>
 </html>
