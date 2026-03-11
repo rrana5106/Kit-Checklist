@@ -151,13 +151,34 @@ fieldset {
 /* ALERT MESSAGE                 */
 /* ============================= */
 
-/* Prevents layout jumping when alert text changes */
-.alert {
-  text-align: center;
-  min-height: 20px;
-  margin: 10px 0;
+/* Prevents layout jumping when alertBox text changes */
+.alertBox {
+
+  display: flex;
+  justify-content: center;
+  margin: 10px auto;
+  min-height: 40px; /* reserve the space for the alert box */
+  
+}
+.alertMsg:empty {
+  display: none;
 }
 
+.alertMsg:not(:empty) {
+  display: flex;
+  justify-content: center;
+}
+.alertMsg{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  max-width: max-content;
+  padding: 6px 14px;
+  background: rgba(255,255,255,0.1);
+  border: 2px solid rgba(255,255,255,0.2);
+  border-radius: 50px;
+}
 /* ============================= */
 /* CHECKLIST CONTAINER           */
 /* ============================= */
@@ -166,18 +187,14 @@ fieldset {
   background: rgba(60, 72, 127, 0.2);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-
   border-radius: 16px;
   border: 1px solid rgba(34, 211, 238, 0.35);
-
   box-shadow:
     0 4px 30px rgba(0, 0, 0, 0.1),
     0 0 0 1px rgba(34, 211, 238, 0.15);
-
   display: flex;
   flex-direction: column; /* Stack sections vertically */
   align-items: stretch;
-
   width: min(900px, 100%); /* Responsive width */
   margin: 12px auto 0;
   padding: 18px;
@@ -215,14 +232,31 @@ fieldset {
 /* KIT SECTIONS                  */
 /* ============================= */
 
-#person,
+/* #person,
 #bergen,
 #daysack {
   display: flex;
   flex-direction: column;
   gap: 8px;
+} */
+#person li,
+#bergen li,
+#daysack li{
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+}
+.checkbox-item{
+  flex-shrink: 0;
 }
 
+.item{
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
 /* icon for category */
 .category-icon {
   width: 24px;
@@ -236,24 +270,32 @@ fieldset {
   margin: 0;
 }
 
+
 /* Checked item style */
+.checkbox-item{
+  transform: scale(1.5);
+  margin-right: 8px;
+}
+
 .crossed {
   text-decoration: line-through;
   color: gray;
 }
 
 .remove-btn {
-  background-color: rgb(163, 159, 159);
-  color: rgb(172, 35, 35);
+  background-color: rgb(155, 77, 56);
+  color: rgb(255, 255, 255);
   border-radius: 12px;
   transition-duration: 0.4s;
-  margin: 0px 120px;
+  margin-left: auto;
+  flex-shrink: 0;
 }
 
 .remove-btn:hover{
-  background-color: #b03f3f;
-  color: white;
+  background-color: #63b03f;
+  color: rgb(0, 0, 0);
   box-shadow: 0 4px 14px rgba(104, 104, 105, 0.45);
+  display: inline-block;
 }
 
 /* ============================= */
