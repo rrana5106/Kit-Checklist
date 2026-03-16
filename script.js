@@ -57,7 +57,7 @@ function showAlert(messageText, color) {
 // ================================
 // 3) function to add item to the list
 // ================================
-function addItemToList(text, targetList) {
+function addItemToList(text, targetList, category) {
   // Create li element
   const liEl = document.createElement("li");
 
@@ -68,6 +68,7 @@ function addItemToList(text, targetList) {
   const btnEl = document.createElement("button");
   btnEl.textContent = "remove";
   btnEl.classList.add("remove-btn");
+  btnEl.type = "button";
 
   // create checkbox
   const checkbox = document.createElement("input");
@@ -97,7 +98,7 @@ function addItemToList(text, targetList) {
     saveToLocalStorage();
 
     // show message
-    showAlert("Item removed", "red");
+    showAlert(`Item removed ${category}`, "red");
   });
 
   targetList.append(liEl);
@@ -138,7 +139,7 @@ formEl.addEventListener("submit", function (event) {
   showAlert(`Item successfully added to ${category}`, "green");
 
   // add item
-  addItemToList(text, targetList);
+  addItemToList(text, targetList, category);
 
   // save data
   saveToLocalStorage();
