@@ -10,19 +10,22 @@
 
   <body>
     <header>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </nav>
       <section class="logo-container">
-        <img src="assets/The-British-Army.svg" alt="British Army Logo" id="army-logo" />
+        <img src="assets/The-British-Army.svg" alt="army-logo" id="army-logo" />
       </section>
       <h1 id="title">Kit Checklist</h1>
-      <p class="page-description">
-        A simple checklist for organising kit into Person, Bergen, and Daysack,
-        helping you track packing progress.
-      </p>
     </header>
 
     <main>
       <div class="add-item-container">
-        <form id="addItemForm" autocomplete="off">
+        <form action="" id="addItemForm">
           <fieldset>
             <legend>User Option</legend>
             <label for="category">Category</label>
@@ -44,41 +47,60 @@
         </form>
       </div>
       <!-- alertBox container -->
-      <div class="alertBox" aria-live="polite">
+      <div class="alertBox">
         <!-- alertMsg -->
-        <div class="alertMsg"></div>
+         <div class="alertMsg"></div>
       </div>
       <div class="container">
         <!-- progress bar -->
         <section>
           <fieldset>
             <legend>
-              <label for="progressBar" id="progress-text"
-                >Packing Progress:
-              </label>
+              <label for="progressBar" id="progress-text">Progress: </label>
             </legend>
 
-            <progress id="progressBar" value="0" max="100">0%</progress>
+            <progress id="progressBar" value="0" max="100">1</progress>
           </fieldset>
         </section>
 
         <!-- person kit list -->
         <section id="person">
-          <h2>Person</h2>
+          <h2>
+            <img
+              src="./assets/mil-person-green.svg"
+              alt="person-img"
+              class="category-icon"
+            />
+            Person
+          </h2>
           <div class="kit-list">
             <ul id="person-kit"></ul>
           </div>
         </section>
         <!-- bergen kit list -->
         <section id="bergen">
-          <h2>Bergen</h2>
+          <h2>
+            <img
+              src="./assets/bergen.svg"
+              alt="bergen-img"
+              class="category-icon"
+            />
+            Bergen
+          </h2>
           <div class="kit-list">
             <ul id="bergen-kit"></ul>
           </div>
         </section>
         <!-- daysack kit list -->
         <section id="daysack">
-          <h2>Daysack</h2>
+          <h2>
+            <img
+              src="./assets/daysack.svg"
+              alt="daysack-img"
+              class="category-icon"
+            />
+            Daysack
+          </h2>
           <div class="kit-list">
             <ul id="daysack-kit"></ul>
           </div>

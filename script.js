@@ -11,13 +11,13 @@ const categoryElement = document.getElementById("category");
 const alertMsg = document.querySelector(".alertMsg");
 
 // ✅ Each category has its own <ul> in HTML
-const personalList = document.getElementById("personal-kit");
+const personList = document.getElementById("person-kit");
 const bergenList = document.getElementById("bergen-kit");
 const daySackList = document.getElementById("daysack-kit");
 
 // creating Object for the category
 const categoryObj = {
-  Personal: personalList,
+  Person: personList,
   Bergen: bergenList,
   Daysack: daySackList,
 };
@@ -29,6 +29,7 @@ progressText.append(progressPercentEl);
 // ==============================
 // 2) ALERT: show pill message
 // ==============================
+let alertTimer;
 function showAlert(messageText, color) {
   // remove old message first
   alertMsg.textContent = "";
@@ -36,9 +37,7 @@ function showAlert(messageText, color) {
   // create a new pill
   const messageEl = document.createElement("div");
 
-// // add pill style
-//   messageEl.classList.add("msgStyle");
-
+messageEl.classList.add("alert-pill");
   // add text
   messageEl.textContent = messageText;
 
@@ -47,9 +46,9 @@ function showAlert(messageText, color) {
 
   // put pill inside alert container
   alertMsg.appendChild(messageEl);
-
+  clearTimeout(alertTimer);
   // auto hide the message after 3 seconds
-   setTimeout(function () {
+   alertTimer = setTimeout(function () {
     alertMsg.textContent = "";
   }, 3000);
 }
@@ -73,6 +72,7 @@ function addItemToList(text, targetList, category) {
   // create checkbox
   const checkbox = document.createElement("input");
   checkbox.type = "checkbox";
+  checkbox.setAttribute("aria-label", text);
   checkbox.classList.add("checkbox-item");
 
   // create item text
@@ -98,7 +98,7 @@ function addItemToList(text, targetList, category) {
     saveToLocalStorage();
 
     // show message
-    showAlert(`Item removed ${category}`, "red");
+    showAlert(`Item removed from ${category}`, "red");
   });
 
   targetList.append(liEl);
@@ -212,19 +212,19 @@ function updateTextStyle(checkbox) {
 function saveToLocalStorage() {
   // create empty object
   const data = {
-    Personal: [],
+    Person: [],
     Bergen: [],
     Daysack: [],
   };
 
-  // ---------- Personal ----------
-  const personalItems = personalList.querySelectorAll("li");
+  // ---------- Person ----------
+  const personItems = personList.querySelectorAll("li");
 
-  personalItems.forEach(function (li) {
+  personItems.forEach(function (li) {
     const checkbox = li.querySelector(".checkbox-item");
     const textEl = li.querySelector(".item");
 
-    data.Personal.push({
+    data.Person.push({
       text: textEl.textContent,
       checked: checkbox.checked,
     });
@@ -270,18 +270,18 @@ function loadFromLocalStorage() {
   if (!savedData) return;
 
   // clear current lists first
-  personalList.innerHTML = "";
+  personList.innerHTML = "";
   bergenList.innerHTML = "";
   daySackList.innerHTML = "";
 
   // convert string back to object
   const data = JSON.parse(savedData);
 
-  // ---------- Personal ----------
-  data.Personal.forEach(function (item) {
-    addItemToList(item.text, personalList);
+  // ---------- Person ----------
+  data.Person.forEach(function (item) {
+    addItemToList(item.text, personList,"Person");
 
-    const lastLi = personalList.lastElementChild;
+    const lastLi = personList.lastElementChild;
     const checkbox = lastLi.querySelector(".checkbox-item");
 
     checkbox.checked = item.checked;
@@ -290,7 +290,7 @@ function loadFromLocalStorage() {
 
   // ---------- Bergen ----------
   data.Bergen.forEach(function (item) {
-    addItemToList(item.text, bergenList);
+    addItemToList(item.text, bergenList,"Bergen");
 
     const lastLi = bergenList.lastElementChild;
     const checkbox = lastLi.querySelector(".checkbox-item");
@@ -301,7 +301,7 @@ function loadFromLocalStorage() {
 
   // ---------- Daysack ----------
   data.Daysack.forEach(function (item) {
-    addItemToList(item.text, daySackList);
+    addItemToList(item.text, daySackList,"Daysack");
 
     const lastLi = daySackList.lastElementChild;
     const checkbox = lastLi.querySelector(".checkbox-item");
