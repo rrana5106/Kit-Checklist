@@ -10,6 +10,17 @@
   /* border: 2px solid; */
 }
 
+/* classification */
+.classification {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #e6edf5;
+  margin: 6px 0;
+  opacity: 0.5;
+}
+
 /* Page base styling */
 body {
   margin: 0; /* Remove default browser margin */
@@ -18,6 +29,8 @@ body {
   font-family: "Segoe UI", Inter, sans-serif;
   color: #e6edf5; /* Light text for contrast */
 }
+
+
 
 /* Center main page title */
 #title {
@@ -265,12 +278,7 @@ footer {
   opacity: 0.5;
 }
 
-/* unclassified */
-#unclassified {
-  text-align: center;
-  /* color: #1c2b3a; */
-  /* opacity: 0.9; */
-}
+
 /* ============================= */
 /* MOBILE RESPONSIVE ADJUSTMENTS */
 /* ============================= */
